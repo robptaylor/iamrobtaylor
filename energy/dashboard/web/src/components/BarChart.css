@@ -1,0 +1,21 @@
+:root {
+    --heading-background: #aaa;
+    --heading-text: #ffffff;
+    --round: 5px;
+}
+
+html {
+    background-color: #eee;
+}
+
+/* .line-chart{
+    max-width: 10em;
+    /* max-height: 800px; } 
+*/
+
+/* .chart-container {
+    border-radius: 10px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+} */

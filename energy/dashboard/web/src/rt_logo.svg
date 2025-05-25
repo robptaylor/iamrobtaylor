@@ -1,0 +1,10 @@
+<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="60" height="60" fill="white"/>
+  
+  <!-- Light blue circle -->
+  <circle cx="30" cy="30" r="16" fill="#87CEEB"/>
+  
+  <!-- Medium blue "rt" text -->
+  <text x="30" y="32" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#4682B4">rt</text>
+</svg>

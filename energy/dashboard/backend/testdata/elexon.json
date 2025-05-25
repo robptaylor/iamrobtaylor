@@ -1,0 +1,362 @@
+[
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "BIOMASS",
+        "generation": 1692
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "CCGT",
+        "generation": 2879
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "COAL",
+        "generation": 0
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTELEC",
+        "generation": 997
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTEW",
+        "generation": 0
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTFR",
+        "generation": 1505
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTGRNL",
+        "generation": -514
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTIFA2",
+        "generation": 992
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTIRL",
+        "generation": -451
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTNED",
+        "generation": 1027
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTNEM",
+        "generation": 1020
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTNSL",
+        "generation": 1397
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTVKL",
+        "generation": 988
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "NPSHYD",
+        "generation": 76
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "NUCLEAR",
+        "generation": 3488
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "OCGT",
+        "generation": 41
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "OIL",
+        "generation": 0
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "OTHER",
+        "generation": 297
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "PS",
+        "generation": 236
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T13:00:00Z",
+        "startTime": "2025-05-05T12:55:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "WIND",
+        "generation": 5749
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "BIOMASS",
+        "generation": 1744
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "CCGT",
+        "generation": 2848
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "COAL",
+        "generation": 0
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTELEC",
+        "generation": 997
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTEW",
+        "generation": 0
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTFR",
+        "generation": 1505
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTGRNL",
+        "generation": -514
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTIFA2",
+        "generation": 992
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTIRL",
+        "generation": -451
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTNED",
+        "generation": 1028
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTNEM",
+        "generation": 1019
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTNSL",
+        "generation": 1397
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "INTVKL",
+        "generation": 988
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "NPSHYD",
+        "generation": 78
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "NUCLEAR",
+        "generation": 3486
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "OCGT",
+        "generation": 41
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "OIL",
+        "generation": 0
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "OTHER",
+        "generation": 310
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "PS",
+        "generation": 236
+    },
+    {
+        "dataset": "FUELINST",
+        "publishTime": "2025-05-05T12:55:00Z",
+        "startTime": "2025-05-05T12:50:00Z",
+        "settlementDate": "2025-05-05",
+        "settlementPeriod": 28,
+        "fuelType": "WIND",
+        "generation": 5753
+    }
+]

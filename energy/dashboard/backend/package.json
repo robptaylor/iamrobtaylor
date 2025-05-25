@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npm run compile && node ./dist/main.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/express": "^5.0.2",
+    "express": "^5.1.0",
+    "http-status-codes": "^2.3.0",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@types/module-alias": "^2.0.4",
+    "@types/node": "^22.15.18",
+    "@types/pg": "^8.15.2",
+    "module-alias": "^2.2.3"
+  }
+}
