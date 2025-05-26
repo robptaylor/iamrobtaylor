@@ -1,0 +1,77 @@
+#generation-body {
+    display: flex;
+    justify-content: space-between;
+    height: 450px;
+    gap: 20px;
+}
+
+.generation-gw-last24h {
+    background-color: white;
+    padding: 10px;
+    height: 400px;
+}
+
+.generation-pct-last24h {
+    background-color: white;
+    height: 400px;
+}
+
+.generation-pct-latest {
+    background-color: white;
+    padding: 20px;
+    height: 400px;
+    margin: auto;
+}
+
+.price-last24h {
+    background-color: white;
+    height: 400px;
+}
+
+.generation-gw-last24h-container{
+    height: 450px;
+    background-color: white;
+    flex: 1;
+    max-width: 33%;
+}
+
+.generation-pct-last24h-container{
+    height: 450px;
+    background-color: white;
+    flex: 1;
+    max-width: 33%;
+}
+
+.generation-pct-latest-container{
+    height: 450px;
+    background-color: white;
+    margin: 0 auto;
+    flex: 1;
+    max-width: 33%;
+}
+
+.price-last24h-container{
+    height: 450px;
+    background-color: white;
+    flex: 1;
+    max-width: 33%;
+}
+
+body {
+    background-color: #eee;
+    font-family: 'Prompt';
+}
+
+main{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.rt-logo{
+    width: 60px;
+    height: 60px;
+}
+
+.header {
+    background-color: white;
+}
