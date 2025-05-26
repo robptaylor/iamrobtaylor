@@ -32,3 +32,19 @@ export interface ElexonPrice{
     startTime: Date
     price: number
 }
+
+export interface Emissions {
+    data: EmissionsData[]
+}
+
+export interface EmissionsData{
+    from: Date
+    to: Date
+    intensity: Intensity
+}
+
+export interface Intensity {
+    forecast: number
+    actual: number | null
+    index: string
+}

@@ -3,6 +3,7 @@ import express, { Router} from 'express';
 
 import { last24hPct, latestPct, last24hGW } from './controllers/generation';
 import { last24hPrice } from './controllers/price';
+import { last24hEmissions } from './controllers/emissions';
 import { DAO as ReadOnlyDAO} from './dao/dao';
 import { DAO as ScraperDAO } from './scrapers/dao';
 import { Scraper } from './scrapers/scraper';
@@ -40,6 +41,7 @@ function setupAPI(client: Client){
   router.get('/generation_pct/latest', latestPct(readOnlyDAO));
   router.get('/generation_gw/last24h', last24hGW(readOnlyDAO));
   router.get('/price/last24h', last24hPrice(readOnlyDAO));
+  router.get('/emissions/last24h', last24hEmissions(readOnlyDAO));
 
   app.use('/api', router)
 

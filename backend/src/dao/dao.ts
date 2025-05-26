@@ -57,6 +57,14 @@ export class DAO {
             ORDER BY from_ts`);
     }
 
+    public async EmissionsLastDay(): Promise<EmissionsRow[]> {
+        return this.query(`
+            SELECT from_ts, intensity_g_per_kwh
+            FROM energy.emissions
+            WHERE from_ts >= '${this.dayAgoISOString()}'
+            ORDER BY from_ts`);
+    }
+
     private dayAgoISOString() {
         const pastDate = new Date();
         pastDate.setDate(pastDate.getDate() - 1);
@@ -78,4 +86,9 @@ export interface GenerationRow {
 export interface PriceRow {
     from_ts: Date;
     value: number;
+}
+
+export interface EmissionsRow {
+    from_ts: Date;
+    intensity_g_per_kwh: number;
 }

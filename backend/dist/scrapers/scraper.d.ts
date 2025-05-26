@@ -9,5 +9,6 @@ export declare class Scraper {
     private getCarbonIntensityGenerations;
     private getElexonGeneration;
     private getElexonPrice;
+    private getEmissions;
     private scrape;
 }

@@ -27,6 +27,7 @@ const pg_1 = require("pg");
 const express_1 = __importStar(require("express"));
 const generation_1 = require("./controllers/generation");
 const price_1 = require("./controllers/price");
+const emissions_1 = require("./controllers/emissions");
 const dao_1 = require("./dao/dao");
 const dao_2 = require("./scrapers/dao");
 const scraper_1 = require("./scrapers/scraper");
@@ -56,6 +57,7 @@ function setupAPI(client) {
     router.get('/generation_pct/latest', (0, generation_1.latestPct)(readOnlyDAO));
     router.get('/generation_gw/last24h', (0, generation_1.last24hGW)(readOnlyDAO));
     router.get('/price/last24h', (0, price_1.last24hPrice)(readOnlyDAO));
+    router.get('/emissions/last24h', (0, emissions_1.last24hEmissions)(readOnlyDAO));
     app.use('/api', router);
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {

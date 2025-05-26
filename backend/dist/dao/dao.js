@@ -50,6 +50,13 @@ class DAO {
             WHERE from_ts >= '${this.dayAgoISOString()}'
             ORDER BY from_ts`);
     }
+    async EmissionsLastDay() {
+        return this.query(`
+            SELECT from_ts, intensity_g_per_kwh
+            FROM energy.emissions
+            WHERE from_ts >= '${this.dayAgoISOString()}'
+            ORDER BY from_ts`);
+    }
     dayAgoISOString() {
         const pastDate = new Date();
         pastDate.setDate(pastDate.getDate() - 1);

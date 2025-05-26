@@ -1,4 +1,10 @@
-import { CarbonIntensityGeneration, CarbonIntensityGenerations, ElexonGeneration, ElexonPrice, ElexonPrices } from './model'
+import { 
+    CarbonIntensityGeneration, 
+    CarbonIntensityGenerations,
+    ElexonGeneration,
+    ElexonPrices,
+    Emissions
+ } from './model'
 import { DAO } from './dao'
 
 export class Scraper {
@@ -10,6 +16,10 @@ export class Scraper {
     }
 
     public async start(delay: number){
+        const [from, to] = nowAndTomorrow();
+        const cig = await this.getCarbonIntensityGenerations(from, to);
+        cig.data.map(x => this.dao.upsertCarbonIntensityGeneration(x))
+
         this.scrape();
         this.timeout = setInterval(() => this.scrape(), delay);
     }
@@ -57,18 +67,29 @@ export class Scraper {
         return resp.json();
     }
 
+    private async getEmissions(date: Date): Promise<Emissions>{
+        const u = `https://api.carbonintensity.org.uk/intensity/${getDateString(date)}/pt24h`;
+
+        console.log(`getting: ${u}`);
+        const resp = await fetch(u);
+        return resp.json();
+    }
+
     private async scrape(){
         try{
             console.log(`scraping...`);
             const [from, to] = nowAndTomorrow();
 
-            const cig = await this.getCarbonIntensityGeneration();
+            const cig = await this.getCarbonIntensityGenerations(from, to);
             const elexonGeneration = await this.getElexonGeneration(from, to);
             const elexonPrices = await this.getElexonPrice(from, to);
+            const emissions = await this.getEmissions(to);
 
-            await this.dao.upsertCarbonIntensityGeneration(cig.data);
+            await Promise.all(cig.data.map(x => this.dao.upsertCarbonIntensityGeneration(x)))
+            
             await this.dao.upsertElexonGeneration(elexonGeneration);
             await this.dao.upsertElexonPrices(elexonPrices.data);
+            await this.dao.upsertEmissions(emissions.data);
             console.log(`done scraping`);
         } catch (err){
             console.error(`failed to scrape: ${err}`);

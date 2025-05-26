@@ -8,6 +8,9 @@ class Scraper {
         this.dao = dao;
     }
     async start(delay) {
+        const [from, to] = nowAndTomorrow();
+        const cig = await this.getCarbonIntensityGenerations(from, to);
+        cig.data.map(x => this.dao.upsertCarbonIntensityGeneration(x));
         this.scrape();
         this.timeout = setInterval(() => this.scrape(), delay);
     }
@@ -42,16 +45,24 @@ class Scraper {
         const resp = await fetch(u);
         return resp.json();
     }
+    async getEmissions(date) {
+        const u = `https://api.carbonintensity.org.uk/intensity/${getDateString(date)}/pt24h`;
+        console.log(`getting: ${u}`);
+        const resp = await fetch(u);
+        return resp.json();
+    }
     async scrape() {
         try {
             console.log(`scraping...`);
             const [from, to] = nowAndTomorrow();
-            const cig = await this.getCarbonIntensityGeneration();
+            const cig = await this.getCarbonIntensityGenerations(from, to);
             const elexonGeneration = await this.getElexonGeneration(from, to);
             const elexonPrices = await this.getElexonPrice(from, to);
-            await this.dao.upsertCarbonIntensityGeneration(cig.data);
+            const emissions = await this.getEmissions(to);
+            await Promise.all(cig.data.map(x => this.dao.upsertCarbonIntensityGeneration(x)));
             await this.dao.upsertElexonGeneration(elexonGeneration);
             await this.dao.upsertElexonPrices(elexonPrices.data);
+            await this.dao.upsertEmissions(emissions.data);
             console.log(`done scraping`);
         }
         catch (err) {

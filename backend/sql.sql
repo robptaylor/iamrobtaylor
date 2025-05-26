@@ -53,3 +53,11 @@ CREATE TABLE energy.elexon_price (
     price_mwh double precision,
     UNIQUE (from_ts)
 )
+
+CREATE TABLE energy.emissions (
+    id bigserial primary key,
+    from_ts timestamp,
+    to_ts timestamp,
+    intensity_g_per_kwh double precision,
+    UNIQUE (from_ts, to_ts)
+)

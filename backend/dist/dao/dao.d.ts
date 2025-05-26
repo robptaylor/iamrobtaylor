@@ -8,6 +8,7 @@ export declare class DAO {
     GenerationPctLatest(): Promise<GenerationRow[]>;
     GenerationGWLastDay(): Promise<GenerationRow[]>;
     PriceLastDay(): Promise<PriceRow[]>;
+    EmissionsLastDay(): Promise<EmissionsRow[]>;
     private dayAgoISOString;
     private query;
 }
@@ -19,5 +20,9 @@ export interface GenerationRow {
 export interface PriceRow {
     from_ts: Date;
     value: number;
+}
+export interface EmissionsRow {
+    from_ts: Date;
+    intensity_g_per_kwh: number;
 }
 export {};

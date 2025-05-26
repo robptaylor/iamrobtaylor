@@ -23,7 +23,22 @@
     margin: auto;
 }
 
+#price-body {
+    display: flex;
+    justify-content: center;
+}
+
+#emissions-body {
+    display: flex;
+    justify-content: center;
+}
+
 .price-last24h {
+    background-color: white;
+    height: 400px;
+}
+
+.emissions-last24h {
     background-color: white;
     height: 400px;
 }
@@ -54,7 +69,14 @@
     height: 450px;
     background-color: white;
     flex: 1;
-    max-width: 33%;
+    max-width: 80%;
+}
+
+.emissions-last24h-container{
+    height: 450px;
+    background-color: white;
+    flex: 1;
+    max-width: 80%;
 }
 
 body {

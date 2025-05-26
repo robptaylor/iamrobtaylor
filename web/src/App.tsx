@@ -11,7 +11,7 @@ import LineChart from './components/LineChart';
 import { Anchor, Tabs, TabsProps } from "antd";
 // import rt_logo from "./rt_logo.svg"
 
-import { Generation, Prices } from 'AppAPI'
+import { Emissions, Generation, Prices } from 'AppAPI'
 
 const TabPane = Tabs;
 
@@ -22,6 +22,7 @@ interface Props {
     getGenerationPctLast24h(): Promise<Generation>
     getGenerationGWLast24h(): Promise<Generation>
     getPriceLast24h(): Promise<Prices>
+    getEmissionsLast24h(): Promise<Emissions>
 } 
 
 function App(props: Props) {
@@ -37,10 +38,11 @@ function App(props: Props) {
     }
 
     const [generationPctLast24h, setGenerationPctLast24h] = useState(emptyChart('Last 24h %'));
-    const [priceLast24h, setPriceLast24h] = useState(emptyChart('Last 24h'));
     const [generationPctLatest, setGenerationPctLatest] = useState(emptyChart('Latest %'));
     const [generationGWLast24h, setGenerationGWLast24h] = useState(emptyChart('Last 24h GW'));
     const [generationLatestTitle, setGenerationLatestTitle] = useState('');
+    const [priceLast24h, setPriceLast24h] = useState(emptyChart('Last 24h'));
+    const [emissionsLast24h, setEmissionsLast24h] = useState(emptyChart('Last 24h'));
 
     const dateToLabel = (d: Date): string => {
         return `${padTimeDigit(d.getHours())}:${padTimeDigit(d.getMinutes())}`;
@@ -134,6 +136,17 @@ function App(props: Props) {
         };
     }
 
+    const getEmissionsLast24hData = (emissions: Emissions) => {
+        return {
+            labels: emissions.froms.map(x => dateToLabel(new Date(x))),
+            datasets: [{
+                label: 'emissions',
+                data: emissions.vals,
+                backgroundColor: 'black'
+            }]
+        };
+    }
+
     useEffect(() => {
         const bootstrap = async () => {
             const genLatestAPIData = await props.getGenerationPctLatest();
@@ -142,6 +155,7 @@ function App(props: Props) {
             setGenerationPctLast24h(getGenerationPctLast24hData(await props.getGenerationPctLast24h()));
             setGenerationGWLast24h(getGenerationGWLast24hData(await props.getGenerationGWLast24h()));
             setPriceLast24h(getPriceLast24hData(await props.getPriceLast24h()));
+            setEmissionsLast24h(getEmissionsLast24hData(await props.getEmissionsLast24h()));
 
             const genLatestDate = new Date(genLatestAPIData.froms[0]);
             setGenerationLatestTitle(`Latest ${dateToLabel(genLatestDate)}`)
@@ -186,6 +200,22 @@ function App(props: Props) {
                 </div>
             </section>),
         },
+        {
+            key: '3',
+            label: 'Emissions',
+            children: (
+              <section id="emissions">
+                  <div id="emissions-body">
+                      <div className='emissions-last24h-container'>
+                          <LineChart
+                              chartClassName='emissions-last24h' 
+                              chartData={emissionsLast24h} 
+                              title='Emissions (g per kWh) Last 24h'
+                              displayLegend={false}/>
+                      </div>
+                  </div>
+              </section>),
+          },
       ];
 
     return (

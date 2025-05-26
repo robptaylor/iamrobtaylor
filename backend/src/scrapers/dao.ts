@@ -1,5 +1,5 @@
 import { Client } from "pg";
-import { Data, ElexonGeneration, ElexonPrice } from "./model";
+import { Data, ElexonGeneration, ElexonPrice, Emissions, EmissionsData } from "./model";
 
 export class DAO {
     private pgClient: Client
@@ -32,6 +32,17 @@ export class DAO {
         const rows = g.map(v => `('${v.startTime}', ${v.price})`);
         
         const query = `INSERT INTO energy.elexon_price (from_ts, price_mwh)
+        VALUES ${rows.join(',')} ON CONFLICT DO NOTHING`;
+
+        console.log(query);
+
+        return this.pgClient.query(query)
+    }
+
+    public upsertEmissions(g: EmissionsData[]){
+        const rows = g.filter(x => x.intensity?.actual !== null).map(v => `('${v.from}', '${v.to}', '${v.intensity.actual}')`);
+        
+        const query = `INSERT INTO energy.emissions (from_ts, to_ts, intensity_g_per_kwh)
         VALUES ${rows.join(',')} ON CONFLICT DO NOTHING`;
 
         console.log(query);

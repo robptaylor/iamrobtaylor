@@ -19,6 +19,11 @@ export async function GetPriceLast24h(): Promise<Prices>{
     return await response.json();
 }
 
+export async function GetEmissionsLast24h(): Promise<Prices>{
+    const response = await fetch('/api/emissions/last24h');
+    return await response.json();
+}
+
 export interface FuelVal{
     fuel: string;
     vals: number[];
@@ -30,6 +35,11 @@ export interface Generation{
 }
 
 export interface Prices{
+    froms: string[];
+    vals: number[];
+}
+
+export interface Emissions{
     froms: string[];
     vals: number[];
 }
