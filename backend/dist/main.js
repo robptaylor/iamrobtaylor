@@ -45,7 +45,7 @@ function setupPGClient() {
 function setupScraper(client) {
     const scraperDAO = new dao_2.DAO(client);
     const sc = new scraper_1.Scraper(scraperDAO);
-    const fifteenMins = 5000;
+    const fifteenMins = 15 * 60 * 1000;
     sc.start(fifteenMins);
 }
 function setupAPI(client) {
