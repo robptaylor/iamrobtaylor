@@ -8,12 +8,16 @@ interface Props {
   chartClassName: string
   minY?: number
   displayLegend?: boolean
+  yTitle?: {
+    text: string;
+    display: boolean;
+    align: 'center' | 'start' | 'end';
+  }
 }
 
 function LineChart(props: Props) {
   return (
     <div className={props.chartClassName}>
-      <div className="chart-title">{props.title}</div>
       <Line
         data={props.chartData}
         options={{
@@ -21,12 +25,17 @@ function LineChart(props: Props) {
             legend: {
               display: props.displayLegend ?? true,
               position: 'bottom'
+            },
+            title: {
+              display: true,
+              text: props.title,
             }
           },
           scales: {
             y: {
               beginAtZero: true,
               min: props.minY,
+              title: props.yTitle
             },
             x: {},
           },

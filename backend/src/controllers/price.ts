@@ -4,7 +4,22 @@ import { Prices } from '@/models/price';
 
 export const last24hPrice = (dao: DAO) => async (req: Request, res: Response, next: NextFunction) => {
     try{
-        const rows: PriceRow[] = await dao.PriceLastDay();
+        const date = new Date();
+        date.setDate(date.getDate() - 1);
+
+        const rows: PriceRow[] = await dao.Prices(date);
+        res.json(toModel(rows));
+    } catch (error){
+        next(error);
+    }
+}
+
+export const lastWeekPrice = (dao: DAO) => async (req: Request, res: Response, next: NextFunction) => {
+    try{
+        const date = new Date();
+        date.setDate(date.getDate() - 7);
+
+        const rows: PriceRow[] = await dao.Prices(date);
         res.json(toModel(rows));
     } catch (error){
         next(error);

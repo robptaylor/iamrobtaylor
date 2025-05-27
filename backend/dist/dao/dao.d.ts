@@ -7,8 +7,8 @@ export declare class DAO {
     GenerationPctLastDay(): Promise<GenerationRow[]>;
     GenerationPctLatest(): Promise<GenerationRow[]>;
     GenerationGWLastDay(): Promise<GenerationRow[]>;
-    PriceLastDay(): Promise<PriceRow[]>;
-    EmissionsLastDay(): Promise<EmissionsRow[]>;
+    Prices(from: Date): Promise<PriceRow[]>;
+    Emissions(from: Date): Promise<EmissionsRow[]>;
     private dayAgoISOString;
     private query;
 }

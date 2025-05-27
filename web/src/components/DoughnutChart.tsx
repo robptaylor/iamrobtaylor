@@ -13,7 +13,6 @@ interface Props {
 function DoughnutChart(props: Props) {
   return (
     <div className={props.chartClassName}>
-      <div className="chart-title">{props.title}</div>
       <Doughnut
         data={props.chartData}
         options={{
@@ -21,6 +20,10 @@ function DoughnutChart(props: Props) {
             legend: {
               display: true,
               position: 'bottom'
+            },
+            title: {
+              display: true,
+              text: props.title,
             }
           },
           responsive: true,

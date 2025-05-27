@@ -19,8 +19,18 @@ export async function GetPriceLast24h(): Promise<Prices>{
     return await response.json();
 }
 
+export async function GetPriceLastWeek(): Promise<Prices>{
+    const response = await fetch('/api/price/lastWeek');
+    return await response.json();
+}
+
 export async function GetEmissionsLast24h(): Promise<Prices>{
     const response = await fetch('/api/emissions/last24h');
+    return await response.json();
+}
+
+export async function GetEmissionsLastWeek(): Promise<Prices>{
+    const response = await fetch('/api/emissions/lastWeek');
     return await response.json();
 }
 

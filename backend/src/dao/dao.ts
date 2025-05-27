@@ -49,19 +49,19 @@ export class DAO {
             ORDER BY from_ts, fuel`)
     }
 
-    public async PriceLastDay(): Promise<PriceRow[]> {
+    public async Prices(from: Date): Promise<PriceRow[]> {
         return this.query(`
             SELECT from_ts, price_mwh as value
             FROM energy.elexon_price
-            WHERE from_ts >= '${this.dayAgoISOString()}'
+            WHERE from_ts >= '${from.toISOString()}'
             ORDER BY from_ts`);
     }
 
-    public async EmissionsLastDay(): Promise<EmissionsRow[]> {
+    public async Emissions(from: Date): Promise<EmissionsRow[]> {
         return this.query(`
             SELECT from_ts, intensity_g_per_kwh
             FROM energy.emissions
-            WHERE from_ts >= '${this.dayAgoISOString()}'
+            WHERE from_ts >= '${from.toISOString()}'
             ORDER BY from_ts`);
     }
 

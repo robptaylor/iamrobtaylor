@@ -4,7 +4,22 @@ import { Emissions } from '@/models/emissions';
 
 export const last24hEmissions = (dao: DAO) => async (req: Request, res: Response, next: NextFunction) => {
     try{
-        const rows: EmissionsRow[] = await dao.EmissionsLastDay();
+        const date = new Date();
+        date.setDate(date.getDate() - 1);
+
+        const rows: EmissionsRow[] = await dao.Emissions(date);
+        res.json(toModel(rows));
+    } catch (error){
+        next(error);
+    }
+}
+
+export const lastWeekEmissions = (dao: DAO) => async (req: Request, res: Response, next: NextFunction) => {
+    try{
+        const date = new Date();
+        date.setDate(date.getDate() - 7);
+
+        const rows: EmissionsRow[] = await dao.Emissions(date);
         res.json(toModel(rows));
     } catch (error){
         next(error);

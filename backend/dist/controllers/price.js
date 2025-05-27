@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.last24hPrice = void 0;
+exports.lastWeekPrice = exports.last24hPrice = void 0;
 const last24hPrice = (dao) => async (req, res, next) => {
     try {
-        const rows = await dao.PriceLastDay();
+        const date = new Date();
+        date.setDate(date.getDate() - 1);
+        const rows = await dao.Prices(date);
         res.json(toModel(rows));
     }
     catch (error) {
@@ -11,6 +13,18 @@ const last24hPrice = (dao) => async (req, res, next) => {
     }
 };
 exports.last24hPrice = last24hPrice;
+const lastWeekPrice = (dao) => async (req, res, next) => {
+    try {
+        const date = new Date();
+        date.setDate(date.getDate() - 7);
+        const rows = await dao.Prices(date);
+        res.json(toModel(rows));
+    }
+    catch (error) {
+        next(error);
+    }
+};
+exports.lastWeekPrice = lastWeekPrice;
 const toModel = (rows) => {
     const prices = {
         froms: [],

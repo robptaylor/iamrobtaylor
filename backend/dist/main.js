@@ -45,7 +45,7 @@ function setupPGClient() {
 function setupScraper(client) {
     const scraperDAO = new dao_2.DAO(client);
     const sc = new scraper_1.Scraper(scraperDAO);
-    const fifteenMins = 15 * 60 * 1000;
+    const fifteenMins = 5000;
     sc.start(fifteenMins);
 }
 function setupAPI(client) {
@@ -57,7 +57,9 @@ function setupAPI(client) {
     router.get('/generation_pct/latest', (0, generation_1.latestPct)(readOnlyDAO));
     router.get('/generation_gw/last24h', (0, generation_1.last24hGW)(readOnlyDAO));
     router.get('/price/last24h', (0, price_1.last24hPrice)(readOnlyDAO));
+    router.get('/price/lastWeek', (0, price_1.lastWeekPrice)(readOnlyDAO));
     router.get('/emissions/last24h', (0, emissions_1.last24hEmissions)(readOnlyDAO));
+    router.get('/emissions/lastWeek', (0, emissions_1.lastWeekEmissions)(readOnlyDAO));
     app.use('/api', router);
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {

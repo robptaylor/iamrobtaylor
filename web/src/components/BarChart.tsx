@@ -8,12 +8,16 @@ interface Props {
   chartData: ChartData<'bar'>
   title: string
   chartClassName: string
+  yTitle?: {
+    text: string;
+    display: boolean;
+    align: 'center' | 'start' | 'end';
+  }
 }
 
 function BarChart(props: Props) {
   return (
     <div className={props.chartClassName}>
-      <div className="chart-title">{props.title}</div>
       <Bar
         data={props.chartData}
         options={{
@@ -21,13 +25,18 @@ function BarChart(props: Props) {
             legend: {
               display: true,
               position: 'bottom'
+            },
+            title: {
+              display: true,
+              text: props.title,
             }
           },
           scales: {
             y: {
               beginAtZero: true,
               max: 100,
-              stacked: true
+              stacked: true,
+              title: props.yTitle
             },
             x: {
               stacked: true,

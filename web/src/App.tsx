@@ -22,7 +22,9 @@ interface Props {
     getGenerationPctLast24h(): Promise<Generation>
     getGenerationGWLast24h(): Promise<Generation>
     getPriceLast24h(): Promise<Prices>
+    getPriceLastWeek(): Promise<Prices>
     getEmissionsLast24h(): Promise<Emissions>
+    getEmissionsLastWeek(): Promise<Emissions>
 } 
 
 function App(props: Props) {
@@ -42,10 +44,16 @@ function App(props: Props) {
     const [generationGWLast24h, setGenerationGWLast24h] = useState(emptyChart('Last 24h GW'));
     const [generationLatestTitle, setGenerationLatestTitle] = useState('');
     const [priceLast24h, setPriceLast24h] = useState(emptyChart('Last 24h'));
+    const [priceLastWeek, setPriceLastWeek] = useState(emptyChart('Last Week'));
     const [emissionsLast24h, setEmissionsLast24h] = useState(emptyChart('Last 24h'));
+    const [emissionsLastWeek, setEmissionsLastWeek] = useState(emptyChart('Last Week'));
 
-    const dateToLabel = (d: Date): string => {
+    const dateToTimeLabel = (d: Date): string => {
         return `${padTimeDigit(d.getHours())}:${padTimeDigit(d.getMinutes())}`;
+    };
+
+    const dateToDateTimeLabel = (d: Date): string => {
+        return `${d.getDate()}/${d.getMonth()} ${padTimeDigit(d.getHours())}:${padTimeDigit(d.getMinutes())}`;
     };
 
     const colors: Map<string, string> = new Map([
@@ -105,7 +113,7 @@ function App(props: Props) {
         });
     
         return {
-            labels: gens['froms'].map(x => dateToLabel(new Date(x))),
+            labels: gens['froms'].map(x => dateToTimeLabel(new Date(x))),
             datasets: datasets
         };
     }
@@ -120,12 +128,12 @@ function App(props: Props) {
         });
     
         return {
-            labels: gens['froms'].map(x => dateToLabel(new Date(x))),
+            labels: gens['froms'].map(x => dateToTimeLabel(new Date(x))),
             datasets: datasets
         };
     }
 
-    const getPriceLast24hData = (prices: Prices) => {
+    const getPriceData = (prices: Prices, dateToLabel: (d: Date) => string) => {
         return {
             labels: prices.froms.map(x => dateToLabel(new Date(x))),
             datasets: [{
@@ -136,7 +144,7 @@ function App(props: Props) {
         };
     }
 
-    const getEmissionsLast24hData = (emissions: Emissions) => {
+    const getEmissionsData = (emissions: Emissions, dateToLabel: (d: Date) => string) => {
         return {
             labels: emissions.froms.map(x => dateToLabel(new Date(x))),
             datasets: [{
@@ -154,11 +162,13 @@ function App(props: Props) {
             setGenerationPctLatest(getGenerationPctLatestData(genLatestAPIData));
             setGenerationPctLast24h(getGenerationPctLast24hData(await props.getGenerationPctLast24h()));
             setGenerationGWLast24h(getGenerationGWLast24hData(await props.getGenerationGWLast24h()));
-            setPriceLast24h(getPriceLast24hData(await props.getPriceLast24h()));
-            setEmissionsLast24h(getEmissionsLast24hData(await props.getEmissionsLast24h()));
+            setPriceLast24h(getPriceData(await props.getPriceLast24h(), dateToTimeLabel));
+            setPriceLastWeek(getPriceData(await props.getPriceLastWeek(), dateToDateTimeLabel));
+            setEmissionsLast24h(getEmissionsData(await props.getEmissionsLast24h(), dateToTimeLabel));
+            setEmissionsLastWeek(getEmissionsData(await props.getEmissionsLastWeek(), dateToDateTimeLabel));
 
             const genLatestDate = new Date(genLatestAPIData.froms[0]);
-            setGenerationLatestTitle(`Latest ${dateToLabel(genLatestDate)}`)
+            setGenerationLatestTitle(`Latest ${dateToTimeLabel(genLatestDate)}`)
         };
 
         bootstrap();
@@ -172,10 +182,21 @@ function App(props: Props) {
             <section id="generation">
                 <div id="generation-body">
                     <div className='generation-gw-last24h-container'>
-                        <LineChart chartClassName='generation-gw-last24h' chartData={generationGWLast24h} title='Last 24h GW' minY={0}/>
+                        <LineChart 
+                            chartClassName='generation-gw-last24h'
+                            chartData={generationGWLast24h}
+                            title='Last 24h'
+                            yTitle={{align: 'center', display: true, text: 'GW'}}
+                            minY={0}
+                            />
                     </div>
                     <div className='generation-pct-last24h-container'>
-                        <BarChart chartClassName='generation-pct-last24h' chartData={generationPctLast24h} title='Last 24h %'/>
+                        <BarChart 
+                            chartClassName='generation-pct-last24h'
+                            chartData={generationPctLast24h}
+                            title='Last 24h'
+                            yTitle={{align: 'center', display: true, text: '%'}}
+                            />
                     </div>
                     <div className='generation-pct-latest-container'>
                         <DoughnutChart chartClassName='generation-pct-latest' chartData={generationPctLatest} title={generationLatestTitle}/>
@@ -190,11 +211,20 @@ function App(props: Props) {
           children: (
             <section id="price">
                 <div id="price-body">
+                    <div className='price-lastweek-container'>
+                        <LineChart
+                            chartClassName='price-lastweek' 
+                            chartData={priceLastWeek} 
+                            title='Last Week'
+                            yTitle={{align: 'center', display: true, text: '£/MWh'}}
+                            displayLegend={false}/>
+                    </div>
                     <div className='price-last24h-container'>
                         <LineChart
                             chartClassName='price-last24h' 
                             chartData={priceLast24h} 
-                            title='Price per MWh Last 24h'
+                            title='Last 24h'
+                            yTitle={{align: 'center', display: true, text: '£/MWh'}}
                             displayLegend={false}/>
                     </div>
                 </div>
@@ -206,12 +236,21 @@ function App(props: Props) {
             children: (
               <section id="emissions">
                   <div id="emissions-body">
+                    <div className='emissions-lastweek-container'>
+                        <LineChart
+                            chartClassName='emissions-lastweek' 
+                            chartData={emissionsLastWeek} 
+                            title='Last Week'
+                            yTitle={{align: 'center', display: true, text: 'g/kWh'}}
+                            displayLegend={false}/>
+                      </div>
                       <div className='emissions-last24h-container'>
-                          <LineChart
-                              chartClassName='emissions-last24h' 
-                              chartData={emissionsLast24h} 
-                              title='Emissions (g per kWh) Last 24h'
-                              displayLegend={false}/>
+                        <LineChart
+                            chartClassName='emissions-last24h' 
+                            chartData={emissionsLast24h} 
+                            title='Last 24h'
+                            yTitle={{align: 'center', display: true, text: 'g/kWh'}}
+                            displayLegend={false}/>
                       </div>
                   </div>
               </section>),

@@ -23,26 +23,6 @@
     margin: auto;
 }
 
-#price-body {
-    display: flex;
-    justify-content: center;
-}
-
-#emissions-body {
-    display: flex;
-    justify-content: center;
-}
-
-.price-last24h {
-    background-color: white;
-    height: 400px;
-}
-
-.emissions-last24h {
-    background-color: white;
-    height: 400px;
-}
-
 .generation-gw-last24h-container{
     height: 450px;
     background-color: white;
@@ -65,20 +45,6 @@
     max-width: 33%;
 }
 
-.price-last24h-container{
-    height: 450px;
-    background-color: white;
-    flex: 1;
-    max-width: 80%;
-}
-
-.emissions-last24h-container{
-    height: 450px;
-    background-color: white;
-    flex: 1;
-    max-width: 80%;
-}
-
 body {
     background-color: #eee;
     font-family: 'Prompt';
@@ -96,4 +62,62 @@ main{
 
 .header {
     background-color: white;
+}
+
+#emissions-body {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.emissions-last24h {
+    background-color: white;
+    height: 400px;
+}
+
+.emissions-lastweek {
+    background-color: white;
+    height: 400px;
+}
+
+.emissions-last24h-container{
+    height: 450px;
+    background-color: white;
+    flex: 1;
+    max-width: 40%;
+}
+
+.emissions-lastweek-container{
+    height: 450px;
+    background-color: white;
+    flex: 1;
+    max-width: 40%;
+}
+
+#price-body {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.price-last24h {
+    background-color: white;
+    height: 400px;
+}
+
+.price-lastweek {
+    background-color: white;
+    height: 400px;
+}
+
+.price-last24h-container{
+    height: 450px;
+    background-color: white;
+    flex: 1;
+    max-width: 40%;
+}
+
+.price-lastweek-container{
+    height: 450px;
+    background-color: white;
+    flex: 1;
+    max-width: 40%;
 }

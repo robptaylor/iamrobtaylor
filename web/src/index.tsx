@@ -6,7 +6,9 @@ import {
   GetGenerationGWLast24h,
   GetGenerationPctLast24h,
   GetPriceLast24h,
-  GetEmissionsLast24h
+  GetEmissionsLast24h,
+  GetPriceLastWeek,
+  GetEmissionsLastWeek
 } from './AppAPI'
 
 createRoot(document.getElementById('root')!).render(
@@ -16,7 +18,9 @@ createRoot(document.getElementById('root')!).render(
       getGenerationGWLast24h={GetGenerationGWLast24h}
       getGenerationPctLast24h={GetGenerationPctLast24h}
       getPriceLast24h={GetPriceLast24h}
+      getPriceLastWeek={GetPriceLastWeek}
       getEmissionsLast24h={GetEmissionsLast24h}
+      getEmissionsLastWeek={GetEmissionsLastWeek}
       />
   </StrictMode>,
 )

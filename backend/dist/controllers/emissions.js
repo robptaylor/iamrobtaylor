@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.last24hEmissions = void 0;
+exports.lastWeekEmissions = exports.last24hEmissions = void 0;
 const last24hEmissions = (dao) => async (req, res, next) => {
     try {
-        const rows = await dao.EmissionsLastDay();
+        const date = new Date();
+        date.setDate(date.getDate() - 1);
+        const rows = await dao.Emissions(date);
         res.json(toModel(rows));
     }
     catch (error) {
@@ -11,6 +13,18 @@ const last24hEmissions = (dao) => async (req, res, next) => {
     }
 };
 exports.last24hEmissions = last24hEmissions;
+const lastWeekEmissions = (dao) => async (req, res, next) => {
+    try {
+        const date = new Date();
+        date.setDate(date.getDate() - 7);
+        const rows = await dao.Emissions(date);
+        res.json(toModel(rows));
+    }
+    catch (error) {
+        next(error);
+    }
+};
+exports.lastWeekEmissions = lastWeekEmissions;
 const toModel = (rows) => {
     const emissions = {
         froms: [],
