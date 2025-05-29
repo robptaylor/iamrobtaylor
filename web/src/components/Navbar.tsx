@@ -13,32 +13,19 @@ interface NavLinkType {
   ]
 
   export const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
     return (
       <header>
         <nav>
-          {/* Logo */}
-          {/* <NavLink to='/' className='font-bold'>
-            NavigationBar
-          </NavLink> */}
-          {/* Navigation Links Container */}
-          <div className='nav-links'>
-              <div key={'Home'}>
-                <NavLink to='/'>{'Home'}</NavLink>
-              </div>|
-              <div key={'UKEnergy'}>
-                <NavLink to='/ukenergy'>{'UKEnergy'}</NavLink>
-              </div>
-
-            {/* {navLinks.map((link) => (
-              <div key={link.name}>
-                <NavLink to={link.path}>{link.name}</NavLink>
-              </div>
-            ))} */}
-            {/* <a href='https://chinwike.space'>Explore Further</a> */}
-          </div>
-          {/* Mobile Menu Button */}
-          {/* <button>{isMenuOpen ? <XIcon /> : <MenuIcon />}</button> */}
+            <NavLink to='/ukenergy' className="nav-left">{'UK ENERGY'}</NavLink>
+            <NavLink to='/' className='font-bold'>
+                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="25" fill="#80bfff"/>
+                    <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="30" fill="white" font-weight="bold" text-anchor="middle" dominant-baseline="middle">
+                        rt
+                    </text>
+                </svg>
+            </NavLink>
+          <NavLink to='/' className="nav-right">{'ABOUT'}</NavLink>
         </nav>
       </header>
     )

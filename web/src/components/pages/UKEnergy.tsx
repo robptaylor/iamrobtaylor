@@ -176,7 +176,7 @@ function UKEnergy(props: Props) {
     const items: TabsProps['items'] = [
         {
           key: '1',
-          label: 'Generation',
+          label: 'GENERATION',
           children: (
             <section id="generation">
                 <div id="generation-body">
@@ -206,7 +206,7 @@ function UKEnergy(props: Props) {
         },
         {
           key: '2',
-          label: 'Price',
+          label: 'PRICE',
           children: (
             <section id="price">
                 <div id="price-body">
@@ -231,7 +231,7 @@ function UKEnergy(props: Props) {
         },
         {
             key: '3',
-            label: 'Emissions',
+            label: 'EMISSIONS',
             children: (
               <section id="emissions">
                   <div id="emissions-body">
@@ -259,6 +259,7 @@ function UKEnergy(props: Props) {
     return (
         <div id="page">
             <Tabs defaultActiveKey="1" items={items}/>
+            <div className="acknowledgement">This page was inspired by <a href="https://grid.iamkate.com">Kate Morley's site</a> with the underlying data coming from <a href="https://bmrs.elexon.co.uk/">Elexon Insights Solution</a> and <a href="https://carbonintensity.org.uk/">Carbon Intensity API</a>. Contains BMRS data © Elexon Limited copyright and database right 2025. </div>
         </div>
     ) 
 }
