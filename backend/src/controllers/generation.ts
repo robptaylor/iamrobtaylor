@@ -13,7 +13,7 @@ export const last24hPct = (dao: DAO) => async (req: Request, res: Response, next
 
 export const latestPct = (dao: DAO) => async (req: Request, res: Response, next: NextFunction) => {
     try{
-        const rows: GenerationRow[] = await dao.GenerationPctLastDay();
+        const rows: GenerationRow[] = await dao.GenerationPctLatest();
         res.json(toGenerationModel(rows));
     } catch (error){
         next(error);

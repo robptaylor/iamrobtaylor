@@ -5,7 +5,7 @@
     gap: 20px;
 }
 
-.generation-gw-last24h-container{
+.generation-container{
     height: 450px;
     background-color: white;
     flex: 1;
@@ -17,51 +17,10 @@
     border-width: 2px;
 }
 
-.generation-gw-last24h {
+.generation-container-body {
     background-color: white;
     padding: 10px;
     height: 400px;
-    border-radius: 10px;
-    padding: 0px 10px 10px 0;
-}
-
-.generation-pct-last24h-container{
-    height: 450px;
-    background-color: white;
-    flex: 1;
-    max-width: 33%;
-
-    border-radius: 10px;
-    border-style: solid;
-    border-color: lightgray;
-    border-width: 2px;
-}
-
-.generation-pct-last24h {
-    background-color: white;
-    height: 400px;
-    border-radius: 10px;
-    padding: 0px 10px 10px 0;
-}
-
-.generation-pct-latest-container{
-    height: 450px;
-    background-color: white;
-    margin: 0 auto;
-    flex: 1;
-    max-width: 33%;
-
-    border-radius: 10px;
-    border-style: solid;
-    border-color: lightgray;
-    border-width: 2px;
-}
-
-.generation-pct-latest {
-    background-color: white;
-    padding: 20px;
-    height: 400px;
-    margin: auto;
     border-radius: 10px;
     padding: 0px 10px 10px 0;
 }
@@ -71,21 +30,7 @@
     justify-content: space-evenly;
 }
 
-.emissions-last24h {
-    background-color: white;
-    height: 400px;
-    border-radius: 10px;
-    padding: 0px 10px 10px 0;
-}
-
-.emissions-lastweek {
-    background-color: white;
-    height: 400px;
-    border-radius: 10px;
-    padding: 0px 10px 10px 0;
-}
-
-.emissions-last24h-container{
+.emissions-container{
     height: 450px;
     background-color: white;
     flex: 1;
@@ -97,16 +42,11 @@
     border-width: 2px;
 }
 
-.emissions-lastweek-container{
-    height: 450px;
+.emissions-container-body {
     background-color: white;
-    flex: 1;
-    max-width: 40%;
-
+    height: 400px;
     border-radius: 10px;
-    border-style: solid;
-    border-color: lightgray;
-    border-width: 2px;
+    padding: 0px 10px 10px 0;
 }
 
 #price-body {
@@ -114,21 +54,7 @@
     justify-content: space-evenly;
 }
 
-.price-last24h {
-    background-color: white;
-    height: 400px;
-    border-radius: 10px;
-    padding: 0px 10px 10px 0;
-}
-
-.price-lastweek {
-    background-color: white;
-    height: 400px;
-    border-radius: 10px;
-    padding: 0px 10px 10px 0;
-}
-
-.price-last24h-container{
+.price-container{
     height: 450px;
     background-color: white;
     flex: 1;
@@ -140,16 +66,11 @@
     border-width: 2px;
 }
 
-.price-lastweek-container{
-    height: 450px;
+.price-container-body {
     background-color: white;
-    flex: 1;
-    max-width: 40%;
-
+    height: 400px;
     border-radius: 10px;
-    border-style: solid;
-    border-color: lightgray;
-    border-width: 2px;
+    padding: 0px 10px 10px 0;
 }
 
 #page {
@@ -159,9 +80,14 @@
     margin-top: 15px;
 }
 
-.acknowledgement{
+footer{
     margin-top: 40px;
     font-size: 14px;
     position: absolute; bottom: 0px; 
     margin-bottom: 20px;
+}
+
+.tab-body {
+    margin: 20px 0 20px 0;
+
 }

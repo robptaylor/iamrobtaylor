@@ -177,28 +177,29 @@ function UKEnergy(props: Props) {
         {
           key: '1',
           label: 'GENERATION',
+          className: 'tab-body',
           children: (
             <section id="generation">
                 <div id="generation-body">
-                    <div className='generation-gw-last24h-container'>
+                    <div className='generation-container'>
                         <LineChart 
-                            chartClassName='generation-gw-last24h'
+                            chartClassName='generation-container-body'
                             chartData={generationGWLast24h}
                             title='Last 24h'
                             yTitle={{align: 'center', display: true, text: 'GW'}}
                             minY={0}
                             />
                     </div>
-                    <div className='generation-pct-last24h-container'>
+                    <div className='generation-container'>
                         <BarChart 
-                            chartClassName='generation-pct-last24h'
+                            chartClassName='generation-container-body'
                             chartData={generationPctLast24h}
                             title='Last 24h'
                             yTitle={{align: 'center', display: true, text: '%'}}
                             />
                     </div>
-                    <div className='generation-pct-latest-container'>
-                        <DoughnutChart chartClassName='generation-pct-latest' chartData={generationPctLatest} title={generationLatestTitle}/>
+                    <div className='generation-container'>
+                        <DoughnutChart chartClassName='generation-container-body' chartData={generationPctLatest} title={generationLatestTitle}/>
                     </div>
                 </div>
             </section>
@@ -207,20 +208,21 @@ function UKEnergy(props: Props) {
         {
           key: '2',
           label: 'PRICE',
+          className: 'tab-body',
           children: (
             <section id="price">
                 <div id="price-body">
-                    <div className='price-lastweek-container'>
+                    <div className='price-container'>
                         <LineChart
-                            chartClassName='price-lastweek' 
+                            chartClassName='price-container-body'
                             chartData={priceLastWeek} 
                             title='Last Week'
                             yTitle={{align: 'center', display: true, text: '£/MWh'}}
                             displayLegend={false}/>
                     </div>
-                    <div className='price-last24h-container'>
+                    <div className='price-container'>
                         <LineChart
-                            chartClassName='price-last24h' 
+                            chartClassName='price-container-body'
                             chartData={priceLast24h} 
                             title='Last 24h'
                             yTitle={{align: 'center', display: true, text: '£/MWh'}}
@@ -232,20 +234,21 @@ function UKEnergy(props: Props) {
         {
             key: '3',
             label: 'EMISSIONS',
+            className: 'tab-body',
             children: (
               <section id="emissions">
                   <div id="emissions-body">
-                    <div className='emissions-lastweek-container'>
+                    <div className='emissions-container'>
                         <LineChart
-                            chartClassName='emissions-lastweek' 
+                            chartClassName='emissions-container-body'
                             chartData={emissionsLastWeek} 
                             title='Last Week'
                             yTitle={{align: 'center', display: true, text: 'g/kWh'}}
                             displayLegend={false}/>
                       </div>
-                      <div className='emissions-last24h-container'>
+                      <div className='emissions-container'>
                         <LineChart
-                            chartClassName='emissions-last24h' 
+                            chartClassName='emissions-container-body'
                             chartData={emissionsLast24h} 
                             title='Last 24h'
                             yTitle={{align: 'center', display: true, text: 'g/kWh'}}
@@ -259,7 +262,7 @@ function UKEnergy(props: Props) {
     return (
         <div id="page">
             <Tabs defaultActiveKey="1" items={items}/>
-            <div className="acknowledgement">This page was inspired by <a href="https://grid.iamkate.com">Kate Morley's site</a> with the underlying data coming from <a href="https://bmrs.elexon.co.uk/">Elexon Insights Solution</a> and <a href="https://carbonintensity.org.uk/">Carbon Intensity API</a>. Contains BMRS data © Elexon Limited copyright and database right 2025. </div>
+            <footer>This page was inspired by <a href="https://grid.iamkate.com">Kate Morley's</a> site with the underlying data coming from <a href="https://bmrs.elexon.co.uk/">Elexon Insights Solution</a> and <a href="https://carbonintensity.org.uk/">Carbon Intensity API</a>. Contains BMRS data © Elexon Limited copyright and database right 2025. </footer>
         </div>
     ) 
 }
