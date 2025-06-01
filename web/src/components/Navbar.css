@@ -13,28 +13,12 @@ nav {
     }
 }
 
-.nav-left {
+.nav-item {
     flex: 1;
-    text-align: right;
-    margin-right: 5px;
-}
-
-.nav-right {
-    flex: 1;
-    text-align: left;
-    margin-left: 5px;
+    text-align: center;
 }
 
 .nav-logo{
     position: absolute;
     left: 60px;
-}
-
-.nav-dot{
-    width: 7px;
-    height: 7px;
-    margin: 0 10px 0 10px;
-    background-color: #80bfff; /* Change this to your desired color */
-    border-radius: 50%;
-    display: inline-block; 
 }
