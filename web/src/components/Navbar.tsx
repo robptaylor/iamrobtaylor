@@ -2,15 +2,15 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Navbar.css'
 
-interface NavLinkType {
-    name: string
-    path: string
-  }
+// interface NavLinkType {
+//     name: string
+//     path: string
+//   }
   
-  const navLinks: NavLinkType[] = [
-    { name: 'Home', path: '/' },
-    { name: 'UKEnergy', path: '/ukenergy' },
-  ]
+//   const navLinks: NavLinkType[] = [
+//     { name: 'Home', path: '/' },
+//     { name: 'UKEnergy', path: '/ukenergy' },
+//   ]
 
   export const Navbar = () => {
     return (
@@ -26,7 +26,7 @@ interface NavLinkType {
             </NavLink>
             <NavLink to='/ukenergy' className="nav-left">{'UK ENERGY'}</NavLink>
             <div className="nav-dot"></div>
-            <NavLink to='/' className="nav-right">{'ABOUT'}</NavLink>
+            <NavLink to='/about' className="nav-right">{'ABOUT'}</NavLink>
         </nav>
       </header>
     )

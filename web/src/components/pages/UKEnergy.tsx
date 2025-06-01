@@ -8,7 +8,7 @@ import BarChart from "../charts/BarChart";
 import DoughnutChart from '../charts/DoughnutChart';
 import LineChart from '../charts/LineChart';
 
-import { Anchor, Tabs, TabsProps } from "antd";
+import { Tabs, TabsProps } from "antd";
 
 import { Emissions, Generation, Prices } from 'components/pages/UKEnergyAPI'
 
@@ -260,7 +260,7 @@ function UKEnergy(props: Props) {
       ];
 
     return (
-        <div id="page">
+        <div id="uk-energy-page">
             <Tabs defaultActiveKey="1" items={items}/>
             <footer>This page was inspired by <a href="https://grid.iamkate.com">Kate Morley's</a> site with the underlying data coming from <a href="https://bmrs.elexon.co.uk/">Elexon Insights Solution</a> and <a href="https://carbonintensity.org.uk/">Carbon Intensity API</a>. Contains BMRS data © Elexon Limited copyright and database right 2025. </footer>
         </div>

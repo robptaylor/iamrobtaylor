@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import UKEnergy from './components/pages/UKEnergy'
-import { Navbar } from './components/Navbar'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import UKEnergy from './components/pages/UKEnergy';
+import About from './components/pages/About';
+import { Navbar } from './components/Navbar';
 
 import { 
     GetGenerationPctLatest, 
@@ -10,7 +11,7 @@ import {
     GetEmissionsLast24h,
     GetPriceLastWeek,
     GetEmissionsLastWeek
-  } from './components/pages/UKEnergyAPI'
+  } from './components/pages/UKEnergyAPI';
 
 const ukEnergy = (
     <UKEnergy 
@@ -21,7 +22,11 @@ const ukEnergy = (
     getPriceLastWeek={GetPriceLastWeek}
     getEmissionsLast24h={GetEmissionsLast24h}
     getEmissionsLastWeek={GetEmissionsLastWeek}/>
-)
+);
+
+const about = (
+    <About></About>
+);
 
 function App() {
   return (
@@ -31,10 +36,11 @@ function App() {
         <div className='min-h-screen w-full flex items-center justify-center'>
           <Routes>
             <Route path='/ukenergy' element={ukEnergy} />
+            <Route path='/about' element={about} />
           </Routes>
         </div>
       </BrowserRouter>
     </main>
   )
 }
-export default App
+export default App;
