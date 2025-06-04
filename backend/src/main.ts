@@ -47,6 +47,8 @@ function setupAPI(client: Client){
 
   app.use('/api', router)
 
+  app.use(express.static('dist'))
+
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
       console.log("Server Listening on PORT:", PORT);

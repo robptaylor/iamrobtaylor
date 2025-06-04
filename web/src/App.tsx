@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import UKEnergy from './components/pages/UKEnergy';
-import About from './components/pages/About';
 import { Navbar } from './components/Navbar';
 
 import { 
@@ -24,10 +23,6 @@ const ukEnergy = (
     getEmissionsLastWeek={GetEmissionsLastWeek}/>
 );
 
-const about = (
-    <About></About>
-);
-
 function App() {
   return (
     <main>
@@ -36,7 +31,6 @@ function App() {
         <div className='min-h-screen w-full flex items-center justify-center'>
           <Routes>
             <Route path='/ukenergy' element={ukEnergy} />
-            <Route path='/about' element={about} />
           </Routes>
         </div>
       </BrowserRouter>
