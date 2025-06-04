@@ -9,10 +9,12 @@ import { DAO as ScraperDAO } from './scrapers/dao';
 import { Scraper } from './scrapers/scraper';
 
 function setupPGClient(): Client{
+  console.log(`POSTGRES_URL=${process.env.POSTGRES_URL}`);
+  
   const client = new Client({
     user: 'postgres',
     password: 'password',
-    host: '127.0.0.1',
+    host: process.env.POSTGRES_URL,
     port: 5432,
     database: 'postgres',
   });
@@ -36,18 +38,22 @@ function setupAPI(client: Client){
   const app = express();
   app.use(express.json())
 
-  const router = Router();
-  router.get('/generation_pct/last24h', last24hPct(readOnlyDAO));
-  router.get('/generation_pct/latest', latestPct(readOnlyDAO));
-  router.get('/generation_gw/last24h', last24hGW(readOnlyDAO));
-  router.get('/price/last24h', last24hPrice(readOnlyDAO));
-  router.get('/price/lastWeek', lastWeekPrice(readOnlyDAO));
-  router.get('/emissions/last24h', last24hEmissions(readOnlyDAO));
-  router.get('/emissions/lastWeek', lastWeekEmissions(readOnlyDAO));
+  const apiRouter = Router();
+  apiRouter.get('/generation_pct/last24h', last24hPct(readOnlyDAO));
+  apiRouter.get('/generation_pct/latest', latestPct(readOnlyDAO));
+  apiRouter.get('/generation_gw/last24h', last24hGW(readOnlyDAO));
+  apiRouter.get('/price/last24h', last24hPrice(readOnlyDAO));
+  apiRouter.get('/price/lastWeek', lastWeekPrice(readOnlyDAO));
+  apiRouter.get('/emissions/last24h', last24hEmissions(readOnlyDAO));
+  apiRouter.get('/emissions/lastWeek', lastWeekEmissions(readOnlyDAO));
 
-  app.use('/api', router)
+  console.log(`dir: ${__dirname}`);
 
-  app.use(express.static('dist'))
+  app.use('/api', apiRouter);
+  app.use(express.static('public'));
+  app.get('/{*splat}', function(req,res) {
+    res.sendFile(__dirname + '/public/index.html');
+  });
 
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {

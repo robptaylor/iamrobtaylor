@@ -30,7 +30,9 @@ function App() {
         <Navbar />
         <div className='min-h-screen w-full flex items-center justify-center'>
           <Routes>
+            <Route path='/' element={ukEnergy} />
             <Route path='/ukenergy' element={ukEnergy} />
+            <Route path='*' element={ukEnergy} />
           </Routes>
         </div>
       </BrowserRouter>

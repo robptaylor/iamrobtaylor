@@ -52,15 +52,20 @@ function setupAPI(client) {
     const readOnlyDAO = new dao_1.DAO(client);
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
-    const router = (0, express_1.Router)();
-    router.get('/generation_pct/last24h', (0, generation_1.last24hPct)(readOnlyDAO));
-    router.get('/generation_pct/latest', (0, generation_1.latestPct)(readOnlyDAO));
-    router.get('/generation_gw/last24h', (0, generation_1.last24hGW)(readOnlyDAO));
-    router.get('/price/last24h', (0, price_1.last24hPrice)(readOnlyDAO));
-    router.get('/price/lastWeek', (0, price_1.lastWeekPrice)(readOnlyDAO));
-    router.get('/emissions/last24h', (0, emissions_1.last24hEmissions)(readOnlyDAO));
-    router.get('/emissions/lastWeek', (0, emissions_1.lastWeekEmissions)(readOnlyDAO));
-    app.use('/api', router);
+    const apiRouter = (0, express_1.Router)();
+    apiRouter.get('/generation_pct/last24h', (0, generation_1.last24hPct)(readOnlyDAO));
+    apiRouter.get('/generation_pct/latest', (0, generation_1.latestPct)(readOnlyDAO));
+    apiRouter.get('/generation_gw/last24h', (0, generation_1.last24hGW)(readOnlyDAO));
+    apiRouter.get('/price/last24h', (0, price_1.last24hPrice)(readOnlyDAO));
+    apiRouter.get('/price/lastWeek', (0, price_1.lastWeekPrice)(readOnlyDAO));
+    apiRouter.get('/emissions/last24h', (0, emissions_1.last24hEmissions)(readOnlyDAO));
+    apiRouter.get('/emissions/lastWeek', (0, emissions_1.lastWeekEmissions)(readOnlyDAO));
+    console.log(`dir: ${__dirname}`);
+    app.use('/api', apiRouter);
+    app.use(express_1.default.static('public'));
+    app.get('/{*splat}', function (req, res) {
+        res.sendFile(__dirname + '/public/index.html');
+    });
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
         console.log("Server Listening on PORT:", PORT);

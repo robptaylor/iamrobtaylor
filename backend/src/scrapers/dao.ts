@@ -23,8 +23,6 @@ export class DAO {
         const query = `INSERT INTO energy.generation_elexon (from_ts, to_ts, fuel, mw)
         VALUES ${rows.join(',')} ON CONFLICT DO NOTHING`;
 
-        console.log(query);
-
         return this.pgClient.query(query)
     }
 
@@ -34,8 +32,6 @@ export class DAO {
         const query = `INSERT INTO energy.elexon_price (from_ts, price_mwh)
         VALUES ${rows.join(',')} ON CONFLICT DO NOTHING`;
 
-        console.log(query);
-
         return this.pgClient.query(query)
     }
 
@@ -44,8 +40,6 @@ export class DAO {
         
         const query = `INSERT INTO energy.emissions (from_ts, to_ts, intensity_g_per_kwh)
         VALUES ${rows.join(',')} ON CONFLICT DO NOTHING`;
-
-        console.log(query);
 
         return this.pgClient.query(query)
     }

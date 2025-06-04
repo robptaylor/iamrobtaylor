@@ -1,1 +1,1 @@
-{"root":["./src/AppAPI.ts","./src/App.tsx","./src/index.tsx","./src/components/BarChart.tsx","./src/components/DoughnutChart.tsx","./src/components/LineChart.tsx","./vite.config.ts"],"version":"5.8.3"}
+{"root":["./src/components/pages/UKEnergyAPI.ts","./src/App.tsx","./src/index.tsx","./src/components/Navbar.tsx","./src/components/charts/BarChart.tsx","./src/components/charts/DoughnutChart.tsx","./src/components/charts/LineChart.tsx","./src/components/pages/UKEnergy.tsx","./vite.config.ts"],"version":"5.8.3"}
