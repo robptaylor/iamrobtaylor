@@ -12,7 +12,7 @@ export class DAO {
     public async GenerationPctLastDay(): Promise<GenerationRow[]> {
         return this.query(`
             SELECT DATE_TRUNC('HOUR', from_ts) as from_ts, fuel, AVG(percent) as value
-            FROM energy.generation
+            FROM energy.generation_pct
             WHERE from_ts >= '${this.dayAgoISOString()}'
             GROUP BY DATE_TRUNC('HOUR', from_ts), fuel
             ORDER BY DATE_TRUNC('HOUR', from_ts), fuel`);
@@ -20,8 +20,8 @@ export class DAO {
 
     public async GenerationPctLatest(): Promise<GenerationRow[]> {
         return this.query(`
-            SELECT from_ts, fuel, percent as value FROM energy.generation
-            WHERE from_ts = (SELECT MAX(from_ts) FROM energy.generation)`)
+            SELECT from_ts, fuel, percent as value FROM energy.generation_pct
+            WHERE from_ts = (SELECT MAX(from_ts) FROM energy.generation_pct)`)
     }
 
     public async GenerationGWLastDay(): Promise<GenerationRow[]>{

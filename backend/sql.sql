@@ -43,7 +43,7 @@ CREATE TABLE energy.generation_elexon (
     fuel energy.fuel_elexon,
     mw double precision,
     UNIQUE (from_ts, to_ts, fuel)
-)
+);
 
 CREATE INDEX energy_generation_elexon_from ON energy.generation_elexon (from_ts);
 
@@ -52,7 +52,7 @@ CREATE TABLE energy.elexon_price (
     from_ts timestamp,
     price_mwh double precision,
     UNIQUE (from_ts)
-)
+);
 
 CREATE TABLE energy.emissions (
     id bigserial primary key,
@@ -60,4 +60,4 @@ CREATE TABLE energy.emissions (
     to_ts timestamp,
     intensity_g_per_kwh double precision,
     UNIQUE (from_ts, to_ts)
-)
+);

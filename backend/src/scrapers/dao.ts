@@ -11,7 +11,7 @@ export class DAO {
     public async upsertCarbonIntensityGeneration(g: Data){
         const rows = g.generationmix.map(v => `('${g.from}', '${g.to}', '${v.fuel}', ${v.perc})`);
 
-        const query = `INSERT INTO energy.generation (from_ts, to_ts, fuel, percent)
+        const query = `INSERT INTO energy.generation_pct (from_ts, to_ts, fuel, percent)
         VALUES ${rows.join(',')} ON CONFLICT DO NOTHING`;
 
         return this.pgClient.query(query)

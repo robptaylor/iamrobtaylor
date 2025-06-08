@@ -10,10 +10,11 @@ import { Scraper } from './scrapers/scraper';
 
 function setupPGClient(): Client{
   console.log(`POSTGRES_URL=${process.env.POSTGRES_URL}`);
+  console.log(`POSTGRES_PASSWORD=${process.env.POSTGRES_PASSWORD}`);
   
   const client = new Client({
     user: 'postgres',
-    password: 'password',
+    password: process.env.POSTGRES_PASSWORD,
     host: process.env.POSTGRES_URL,
     port: 5432,
     database: 'postgres',
