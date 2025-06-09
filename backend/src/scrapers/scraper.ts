@@ -18,7 +18,9 @@ export class Scraper {
     public async start(delay: number){
         const [from, to] = nowAndTomorrow();
         const cig = await this.getCarbonIntensityGenerations(from, to);
-        cig.data.map(x => this.dao.upsertCarbonIntensityGeneration(x))
+
+        const now = new Date();
+        cig.data.filter(x => x.to < now).map(x => this.dao.upsertCarbonIntensityGeneration(x))
 
         this.scrape();
         this.timeout = setInterval(() => this.scrape(), delay);
@@ -85,7 +87,10 @@ export class Scraper {
             const elexonPrices = await this.getElexonPrice(from, to);
             const emissions = await this.getEmissions(to);
 
-            await Promise.all(cig.data.map(x => this.dao.upsertCarbonIntensityGeneration(x)))
+            const now = new Date();
+
+            // they seem to return data for the future (predicted?) so filter that out
+            await Promise.all(cig.data.filter(x => x.to < now).map(x => this.dao.upsertCarbonIntensityGeneration(x)))
             
             await this.dao.upsertElexonGeneration(elexonGeneration);
             await this.dao.upsertElexonPrices(elexonPrices.data);
