@@ -52,7 +52,7 @@ function UKEnergy(props: Props) {
     };
 
     const dateToDateTimeLabel = (d: Date): string => {
-        return `${d.getDate()}/${d.getMonth()} ${padTimeDigit(d.getHours())}:${padTimeDigit(d.getMinutes())}`;
+        return `${d.getDate()}/${d.getMonth()+1} ${padTimeDigit(d.getHours())}:${padTimeDigit(d.getMinutes())}`;
     };
 
     const colors: Map<string, string> = new Map([
