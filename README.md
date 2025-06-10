@@ -12,7 +12,7 @@ docker push robtaylor/iamrobtaylor:v1.0.5
 
 ## To Run
 
-docker run -d --net=host -v /etc/letsencrypt/live/iamrobtaylor.com:/usr/src/app/backend/dist/certs --env-file=env.list robtaylor/iamrobtaylor:v1.0.5
+docker run -d --net=host -v /home/ubuntu/iamrobtaylor/certs:/usr/src/app/backend/dist/certs --env-file=env.list robtaylor/iamrobtaylor:v1.0.6
 
 ## root
 
