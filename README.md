@@ -18,3 +18,10 @@ docker run -d --net=host -v /home/ubuntu/iamrobtaylor/certs:/usr/src/app/backend
 
 sudo su - root
 
+## ssl certs
+
+- certbot used to generate certs: https://certbot.eff.org/instructions?ws=other&os=snap
+
+- They update live on the box /etc/letsencrypt/live/iamrobtaylor.com
+
+- copied to /home/ubuntu/iamrobtaylor/certs as docker volume mounting was being annoying with symlinks so need to remember to copy over again when they expire
