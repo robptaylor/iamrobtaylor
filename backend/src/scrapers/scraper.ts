@@ -20,7 +20,7 @@ export class Scraper {
         const cig = await this.getCarbonIntensityGenerations(from, to);
 
         const now = new Date();
-        cig.data.filter(x => x.to < now).map(x => this.dao.upsertCarbonIntensityGeneration(x))
+        cig.data.map(x => this.dao.upsertCarbonIntensityGeneration(x))
 
         this.scrape();
         this.timeout = setInterval(() => this.scrape(), delay);
@@ -28,11 +28,6 @@ export class Scraper {
 
     public stop(){
         clearInterval(this.timeout);
-    }
-
-    private async getCarbonIntensityGeneration(): Promise<CarbonIntensityGeneration> {
-        const resp = await fetch('https://api.carbonintensity.org.uk/generation');
-        return resp.json();
     }
 
     private async getCarbonIntensityGenerations(from, to: Date): Promise<CarbonIntensityGenerations> {
@@ -90,7 +85,7 @@ export class Scraper {
             const now = new Date();
 
             // they seem to return data for the future (predicted?) so filter that out
-            await Promise.all(cig.data.filter(x => x.to < now).map(x => this.dao.upsertCarbonIntensityGeneration(x)))
+            await Promise.all(cig.data.map(x => this.dao.upsertCarbonIntensityGeneration(x)))
             
             await this.dao.upsertElexonGeneration(elexonGeneration);
             await this.dao.upsertElexonPrices(elexonPrices.data);

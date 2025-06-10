@@ -21,7 +21,7 @@ export class DAO {
     public async GenerationPctLatest(): Promise<GenerationRow[]> {
         return this.query(`
             SELECT from_ts, fuel, percent as value FROM energy.generation_pct
-            WHERE from_ts = (SELECT MAX(from_ts) FROM energy.generation_pct)`)
+            WHERE from_ts = (SELECT MAX(from_ts) FROM energy.generation_pct WHERE from_ts < now())`)
     }
 
     public async GenerationGWLastDay(): Promise<GenerationRow[]>{
