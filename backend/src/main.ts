@@ -71,8 +71,8 @@ function setupAPI(client: Client){
   setupApp(appSecure, readOnlyDAO);
 
   var options = {
-    key: readFileSync('key.pem'),
-    cert: readFileSync('cert.pem'),
+    key: readFileSync('certs/privkey.pem'),
+    cert: readFileSync('certs/fullchain.pem'),
   };
 
   createSecureServer(options, appSecure).listen(443, function(){
