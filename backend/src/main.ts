@@ -1,5 +1,5 @@
 import { Client } from 'pg';
-import express, { Router} from 'express';
+import express, { Router, Express} from 'express';
 
 import { last24hPct, latestPct, last24hGW } from './controllers/generation';
 import { last24hPrice, lastWeekPrice } from './controllers/price';
@@ -7,6 +7,9 @@ import { last24hEmissions, lastWeekEmissions } from './controllers/emissions';
 import { DAO as ReadOnlyDAO} from './dao/dao';
 import { DAO as ScraperDAO } from './scrapers/dao';
 import { Scraper } from './scrapers/scraper';
+import { createServer } from 'http';
+import { createServer as createSecureServer} from 'https';
+import { readFileSync } from 'fs';
 
 function setupPGClient(): Client{
   console.log(`POSTGRES_URL=${process.env.POSTGRES_URL}`);
@@ -33,20 +36,17 @@ function setupScraper(client: Client){
   sc.start(fifteenMins);
 }
 
-function setupAPI(client: Client){
-  const readOnlyDAO = new ReadOnlyDAO(client)
-  
-  const app = express();
+const setupApp = (app: Express, dao: ReadOnlyDAO) => {
   app.use(express.json())
 
   const apiRouter = Router();
-  apiRouter.get('/generation_pct/last24h', last24hPct(readOnlyDAO));
-  apiRouter.get('/generation_pct/latest', latestPct(readOnlyDAO));
-  apiRouter.get('/generation_gw/last24h', last24hGW(readOnlyDAO));
-  apiRouter.get('/price/last24h', last24hPrice(readOnlyDAO));
-  apiRouter.get('/price/lastWeek', lastWeekPrice(readOnlyDAO));
-  apiRouter.get('/emissions/last24h', last24hEmissions(readOnlyDAO));
-  apiRouter.get('/emissions/lastWeek', lastWeekEmissions(readOnlyDAO));
+  apiRouter.get('/generation_pct/last24h', last24hPct(dao));
+  apiRouter.get('/generation_pct/latest', latestPct(dao));
+  apiRouter.get('/generation_gw/last24h', last24hGW(dao));
+  apiRouter.get('/price/last24h', last24hPrice(dao));
+  apiRouter.get('/price/lastWeek', lastWeekPrice(dao));
+  apiRouter.get('/emissions/last24h', last24hEmissions(dao));
+  apiRouter.get('/emissions/lastWeek', lastWeekEmissions(dao));
 
   console.log(`dir: ${__dirname}`);
 
@@ -55,10 +55,28 @@ function setupAPI(client: Client){
   app.get('/{*splat}', function(req,res) {
     res.sendFile(__dirname + '/public/index.html');
   });
+}
 
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-      console.log("Server Listening on PORT:", PORT);
+function setupAPI(client: Client){
+  const readOnlyDAO = new ReadOnlyDAO(client)
+
+  const app = express();
+  setupApp(app, readOnlyDAO);
+
+  createServer(app).listen(80, () => {
+    console.log(`listening on port 80`);
+  })
+
+  var appSecure = express();
+  setupApp(appSecure, readOnlyDAO);
+
+  var options = {
+    key: readFileSync('key.pem'),
+    cert: readFileSync('cert.pem'),
+  };
+
+  createSecureServer(options, appSecure).listen(443, function(){
+      console.log('HTTPS listening on port 443');
   });
 }
 

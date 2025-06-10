@@ -1,1 +1,3 @@
 backend/dist
+cert.pem
+key.pem
