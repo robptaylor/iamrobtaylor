@@ -104,9 +104,9 @@ function UKEnergy(props: Props) {
                 borderColor: getColor(x['fuel']),
                 backgroundColor: getColor(x['fuel']),
                 tension: 0.1,
-                barPercentage: 0.5,
-                barThickness: 15,
-                maxBarThickness: 20,
+                barPercentage: 1,
+                // barThickness: 15,
+                // maxBarThickness: 20,
                 minBarLength: 2,
             }
         });
@@ -260,9 +260,11 @@ function UKEnergy(props: Props) {
       ];
 
     return (
-        <div id="uk-energy-page">
-            <Tabs defaultActiveKey="1" items={items}/>
-            <footer>This page was inspired by <a href="https://grid.iamkate.com">Kate Morley's</a> site with the underlying data coming from <a href="https://bmrs.elexon.co.uk/">Elexon Insights Solution</a> and <a href="https://carbonintensity.org.uk/">Carbon Intensity API</a>. Contains BMRS data © Elexon Limited copyright and database right 2025. </footer>
+        <div>
+            <div id="uk-energy-page">
+                <Tabs defaultActiveKey="1" items={items}/>
+            </div>
+            <div className='acknowledgement'>This page was inspired by <a href="https://grid.iamkate.com">Kate Morley's</a> site with the underlying data coming from <a href="https://bmrs.elexon.co.uk/">Elexon Insights Solution</a> and <a href="https://carbonintensity.org.uk/">Carbon Intensity API</a>. Contains BMRS data © Elexon Limited copyright and database right 2025. </div>
         </div>
     ) 
 }
