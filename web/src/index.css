@@ -5,8 +5,18 @@ html {
     background: #eee;
 }
 
+:root{
+    --body-margin: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        --body-margin: 10px;
+    }
+  }
+
 body {
     height: 100%;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: var(--body-margin);
+    margin-right: var(--body-margin);
 }

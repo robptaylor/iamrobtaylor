@@ -1,15 +1,32 @@
+:root {
+    --flex-direction: row;
+    --generation-container-width: 33%;
+    --emissions-container-width: 40%;
+    --price-container-width: 40%;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        --flex-direction: column;
+        --generation-container-width: 100%;
+        --emissions-container-width: 100%;
+        --price-container-width: 100%;
+    }
+}
+
 #generation-body {
     display: flex;
     justify-content: space-between;
     height: 450px;
     gap: 20px;
+    flex-direction: var(--flex-direction);
 }
 
 .generation-container{
     height: 450px;
     background-color: white;
     flex: 1;
-    max-width: 33%;
+    max-width: var(--generation-container-width);
 
     border-radius: 10px;
     border-style: solid;
@@ -28,13 +45,14 @@
 #emissions-body {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: var(--flex-direction);
 }
 
 .emissions-container{
     height: 450px;
     background-color: white;
     flex: 1;
-    max-width: 40%;
+    max-width: var(--emissions-container-width);
 
     border-radius: 10px;
     border-style: solid;
@@ -52,13 +70,14 @@
 #price-body {
     display: flex;
     justify-content: space-evenly;
+    flex-direction: var(--flex-direction);
 }
 
 .price-container{
     height: 450px;
     background-color: white;
     flex: 1;
-    max-width: 40%;
+    max-width: var(--price-container-width);
 
     border-radius: 10px;
     border-style: solid;
@@ -89,5 +108,4 @@ footer{
 
 .tab-body {
     margin: 20px 0 20px 0;
-
 }

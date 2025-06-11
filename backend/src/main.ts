@@ -63,21 +63,25 @@ function setupAPI(client: Client){
   const app = express();
   setupApp(app, readOnlyDAO);
 
-  createServer(app).listen(80, () => {
-    console.log(`listening on port 80`);
+  const httpPort = process.env.HTTP_PORT || 80;
+
+  createServer(app).listen(httpPort, () => {
+    console.log(`http listening on port ${httpPort}`);
   })
 
-  var appSecure = express();
-  setupApp(appSecure, readOnlyDAO);
-
-  var options = {
-    key: readFileSync('certs/privkey1.pem'),
-    cert: readFileSync('certs/fullchain1.pem'),
-  };
-
-  createSecureServer(options, appSecure).listen(443, function(){
-      console.log('HTTPS listening on port 443');
-  });
+  if (process.env.ENABLE_HTTPS){
+    var appSecure = express();
+    setupApp(appSecure, readOnlyDAO);
+  
+    var options = {
+      key: readFileSync('certs/privkey1.pem'),
+      cert: readFileSync('certs/fullchain1.pem'),
+    };
+  
+    createSecureServer(options, appSecure).listen(443, function(){
+        console.log('https listening on port 443');
+    });
+  }
 }
 
 const client = setupPGClient()
