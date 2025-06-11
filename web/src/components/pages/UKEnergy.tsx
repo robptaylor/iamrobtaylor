@@ -105,8 +105,6 @@ function UKEnergy(props: Props) {
                 backgroundColor: getColor(x['fuel']),
                 tension: 0.1,
                 barPercentage: 1,
-                // barThickness: 15,
-                // maxBarThickness: 20,
                 minBarLength: 2,
             }
         });

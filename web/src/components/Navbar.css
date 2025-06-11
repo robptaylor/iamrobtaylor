@@ -1,3 +1,13 @@
+:root{
+    --logo-left: 60px;
+}
+
+@media only screen and (max-width: 600px) {
+    :root {
+        --logo-left: 20px;
+    }
+}
+
 nav {
     display: flex;
     justify-content: center;
@@ -20,5 +30,5 @@ nav {
 
 .nav-logo{
     position: absolute;
-    left: 60px;
+    left: var(--logo-left);
 }
