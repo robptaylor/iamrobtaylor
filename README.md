@@ -1,18 +1,18 @@
-## Repo Structure
+# Repo Structure
 
 The repo is split into backend (typescript/node.js) and web (react/typescript).
 
-## Docker To Build with tag
+# Docker
 
 Private repo is https://hub.docker.com/repository/docker/robtaylor/iamrobtaylor/general
 
-# Build
+## Build
 
 ```
 docker build -t robtaylor/iamrobtaylor:v1.0.5 .
 ```
 
-# Push
+## Push
 
 ```
 docker push robtaylor/iamrobtaylor:v1.0.5
@@ -24,7 +24,7 @@ docker push robtaylor/iamrobtaylor:v1.0.5
 docker run -d --net=host -v /home/ubuntu/iamrobtaylor/certs:/usr/src/app/backend/dist/certs --env-file=env.list robtaylor/iamrobtaylor:v1.0.6
 ```
 
-## ssl certs
+# SSL certs
 
 - certbot used to generate certs: https://certbot.eff.org/instructions?ws=other&os=snap
 
