@@ -13,7 +13,7 @@ export class DAO {
         return this.query(`
             SELECT DATE_TRUNC('HOUR', from_ts) as from_ts, fuel, AVG(percent) as value
             FROM energy.generation_pct
-            WHERE from_ts >= '${this.dayAgoISOString()}'
+            WHERE from_ts >= '${this.dayAgoISOString()}' AND from_ts < now()
             GROUP BY DATE_TRUNC('HOUR', from_ts), fuel
             ORDER BY DATE_TRUNC('HOUR', from_ts), fuel`);
     }
