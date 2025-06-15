@@ -32,7 +32,6 @@ function setupScraper(client: Client){
   const sc = new Scraper(scraperDAO);
 
   const fifteenMins = 15 * 60 * 1_000;
-  // const fifteenMins = 5_000;
   sc.start(fifteenMins);
 }
 
